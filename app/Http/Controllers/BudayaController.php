@@ -62,7 +62,6 @@ class BudayaController extends Controller
         $budaya->slug = str_slug($request->judul, '-');
         $budaya->konten = $request->konten;
         $budaya->id_user = Auth::user()->id;
-        $budaya->id_kategori = $request->id_kategori;
         // foto
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
