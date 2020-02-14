@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('siswa', 'Api\SiswaController');
 Route::get('most', 'FrontendController@most');
 Route::get('trending', 'FrontendController@trending');
+Route::get('kpop', 'FrontendController@kpop');
 Route::get('restoran1', 'FrontendController@restoran1');
 Route::get('budaya1', 'FrontendController@budaya1');
 Route::get('kategori', 'FrontendController@kategori');

@@ -16,9 +16,10 @@ class FrontendController extends Controller
 {
     public function front()
     {
-        $artikel = Artikel::orderBy('created_at', 'desc')->take(4)->get();
-
-        return view('frontend.front', compact('artikel'));
+        $artikel = Artikel::orderBy('created_at', 'desc')->paginate(3);
+        $kategori = Kategori::all();
+        $tag = Tag::all();
+        return view('frontend.front', compact('artikel', 'kategori', 'tag'));
     }
 
     public function about()
@@ -32,6 +33,11 @@ class FrontendController extends Controller
     public function contact()
     {
         return view('frontend.contact');
+    }
+
+    public function calendar()
+    {
+        return view('backend.calendar');
     }
 
     public function archive()
@@ -49,10 +55,20 @@ class FrontendController extends Controller
         return view('frontend.budaya');
     }
 
-    public function blogrestoran()
+    public function singlebudaya()
     {
-        $restoran = Restoran::orderBy('created_at', 'desc')->paginate(3);
-        return view('frontend.restoran', compact('restoran'));
+        $budaya = Budaya::orderBy('created_at', 'desc')->paginate(4);
+        $kategori = Kategori::all();
+        $tag = Tag::all();
+        return view('frontend.single-budaya',compact ('budaya', 'kategori', 'tag'));
+    }
+
+    public function singlerestoran()
+    {
+        $restoran = Restoran::orderBy('created_at', 'desc')->paginate(4);
+        $kategori = Kategori::all();
+        $tag = Tag::all();
+        return view('frontend.single-restoran',compact ('restoran', 'kategori', 'tag'));
     }
 
     public function blog()
@@ -111,6 +127,20 @@ class FrontendController extends Controller
     public function most()
     {
         $artikel = Artikel::take(3)->get();
+        $tag = Tag::all();
+        $kategori = Kategori::all();
+
+        $response = [
+            'Success' => true,
+            'data' => ['artikel' => $artikel, 'tag' => $tag, 'kategori' => $kategori],
+            'message' => 'Artikel berhasil ditemukan'
+        ];
+        return response()->json($response, 200);
+    }
+
+    public function kpop()
+    {
+        $artikel = Artikel::take(1)->get();
         $tag = Tag::all();
         $kategori = Kategori::all();
 

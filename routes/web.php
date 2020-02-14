@@ -19,8 +19,6 @@ Route::get('/', function () {
     return view('frontend.front');
 });
 
-
-
 Route::get('/about', function () {
     return view('frontend.about');
 });
@@ -63,11 +61,32 @@ Route::group(
         Route::get('/', function () {
             return view('backend.index');
         });
-        route::resource('kategori', 'KategoriController');
-        route::resource('tag', 'TagController');
+        //Kategori
+        route::get('kategori', 'KategoriController@index');
+        route::post('kategori-store', 'KategoriController@store');
+        Route::get('/kategori/{id}/edit', 'KategoriController@edit');
+        Route::delete('/kategori-destroy/{id}', 'KategoriController@destroy');
+
+        //Tag
+        route::get('tag', 'TagController@index');
+        route::post('tag-store', 'TagController@store');
+        Route::get('/tag/{id}/edit', 'TagController@edit');
+        Route::delete('/tag-destroy/{id}', 'TagController@destroy');
+
+        //Budaya
+        route::get('budaya', 'BudayaController@index');
+        route::post('budaya-store', 'BudayaController@store');
+        Route::get('/budaya/{id}/edit', 'BudayaController@edit');
+        Route::delete('/budaya-destroy/{id}', 'BudayaController@destroy');
+
+        //Restoran
+
+
+        //Artikel
         route::resource('artikel', 'ArtikelController');
         route::resource('restoran', 'RestoranController');
         route::resource('budaya', 'BudayaController');
+        route::resource('calendar', 'CalendarController');
     }
 );
 
@@ -78,6 +97,8 @@ Route::group(
         route::get('restoran', 'FrontendController@restoran');
         route::get('about', 'FrontendController@about');
         route::get('blog', 'FrontendController@blog');
+        route::get('singlebudaya/{budaya}', 'FrontendController@singlebudaya');
+        route::get('singlerestoran/{restoran}', 'FrontendController@singlerestoran');
         route::get('contact', 'FrontendController@contact');
         route::get('services', 'FrontendController@services');
         route::get('blog/{artikel}', 'FrontendController@singleblog');
@@ -93,4 +114,5 @@ Route::group(
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/calendar', 'CalendarController@index')->name('calendar');
 Route::get('/logout', 'HomeController@logout')->name('logout');

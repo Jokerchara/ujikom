@@ -104,13 +104,6 @@
                                 <a href="#">Penulis : {{$artikel->user->name}}</a>
                             </div>
                             <h4 class="post-title">{{ $artikel->judul }}</h4>
-                            <!-- Post Meta -->
-                            <div class="post-meta-2">
-                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
-                            </div>
-
                             <p>{!! $artikel->konten !!}</p>
                             <div class="tag-widget post-tag-container mb-5 mt-5">
                                 @foreach($artikel->tag as $data)
@@ -125,143 +118,6 @@
                         </div>
                     </div>
 
-                    <!-- Related Post Area -->
-                    {{-- <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
-                        <!-- Section Title -->
-                        <div class="section-heading">
-                            <h5>Related Post</h5>
-                        </div>
-
-                        <div class="row">
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="single-blog-post style-4 mb-30">
-                                    <div class="post-thumbnail">
-                                        <img src="{{ asset('assets/frontend/img/bg-img/29.jpg')}}" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="single-post.html" class="post-title">Dentists Are Smiling Over Painless Veneer</a>
-                                        <div class="post-meta d-flex">
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="single-blog-post style-4 mb-30">
-                                    <div class="post-thumbnail">
-                                        <img src="{{ asset('assets/frontend/img/bg-img/30.jpg')}}" alt="">
-                                        <a href="video-post.html" class="video-play"><i class="fa fa-play"></i></a>
-                                        <span class="video-duration">09:27</span>
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="single-post.html" class="post-title">Will The Democrats Be Able To Reverse</a>
-                                        <div class="post-meta d-flex">
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="single-blog-post style-4 mb-30">
-                                    <div class="post-thumbnail">
-                                        <img src="{{ asset('assets/frontend/img/bg-img/28.jpg')}}" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="single-post.html" class="post-title">A Guide To Rocky Mountain Vacations</a>
-                                        <div class="post-meta d-flex">
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div> --}}
-
-                    <!-- Comment Area Start -->
-                    {{-- <div class="comment_area clearfix bg-white mb-30 p-30 box-shadow">
-                        <!-- Section Title -->
-                        <div class="section-heading">
-                            <h5>COMMENTS</h5>
-                        </div>
-
-                        <ol>
-                            <!-- Single Comment Area -->
-                            <li class="single_comment_area">
-                                <!-- Comment Content -->
-                                <div class="comment-content d-flex">
-                                    <!-- Comment Author -->
-                                    <div class="comment-author">
-                                        <img src="{{ asset('assets/frontend/img/bg-img/53.jpg')}}" alt="author">
-                                    </div>
-                                    <!-- Comment Meta -->
-                                    <div class="comment-meta">
-                                        <a href="#" class="comment-date">27 Aug 2019</a>
-                                        <h6>Tomas Mandy</h6>
-                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius</p>
-                                        <div class="d-flex align-items-center">
-                                            <a href="#" class="like">like</a>
-                                            <a href="#" class="reply">Reply</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <ol class="children">
-                                    <li class="single_comment_area">
-                                        <!-- Comment Content -->
-                                        <div class="comment-content d-flex">
-                                            <!-- Comment Author -->
-                                            <div class="comment-author">
-                                                <img src="{{ asset('assets/frontend/img/bg-img/54.jpg')}}" alt="author">
-                                            </div>
-                                            <!-- Comment Meta -->
-                                            <div class="comment-meta">
-                                                <a href="#" class="comment-date">27 Aug 2019</a>
-                                                <h6>Britney Millner</h6>
-                                                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius</p>
-                                                <div class="d-flex align-items-center">
-                                                    <a href="#" class="like">like</a>
-                                                    <a href="#" class="reply">Reply</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ol>
-                            </li>
-
-                            <!-- Single Comment Area -->
-                            <li class="single_comment_area">
-                                <!-- Comment Content -->
-                                <div class="comment-content d-flex">
-                                    <!-- Comment Author -->
-                                    <div class="comment-author">
-                                        <img src="{{ asset('assets/frontend/img/bg-img/55.jpg')}}" alt="author">
-                                    </div>
-                                    <!-- Comment Meta -->
-                                    <div class="comment-meta">
-                                        <a href="#" class="comment-date">27 Aug 2019</a>
-                                        <h6>Simon Downey</h6>
-                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius</p>
-                                        <div class="d-flex align-items-center">
-                                            <a href="#" class="like">like</a>
-                                            <a href="#" class="reply">Reply</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
-                    </div> --}}
 
                     <!-- Post A Comment Area -->
                     <div class="post-a-comment-area bg-white mb-30 p-30 box-shadow clearfix">
@@ -269,9 +125,8 @@
                         <div class="section-heading">
                             <h5>LEAVE A REPLY</h5>
                         </div>
-
                         <!-- Reply Form -->
-                       <div id="disqus_thread"></div>
+                    <div id="disqus_thread"></div>
 <script>
 
 /**

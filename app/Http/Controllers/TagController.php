@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tag;
 use App\User;
+use DataTables;
+use Dotenv\Regex\Success;
 use Illuminate\Support\Facades\Validator;
+USE Illuminate\Support\Str;
 
 class TagController extends Controller
 {
@@ -15,28 +18,22 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $tag = Tag::orderBy('created_at', 'desc')->get();
-        return view('backend.tag.index', compact('tag'));
-
-        // $tag = Tag::all();
-
-        // if (count($tag) <= 0) {
-        //     $response = [
-        //         'Success' => false,
-        //         'data' => 'Empty',
-        //         'message' => 'Tag tidak ditemukan'
-        //     ];
-        //     return response()->json($response, 404);
-        // }
-        // $response = [
-        //     'Success' => true,
-        //     'data' => $tag,
-        //     'message' => 'Tag berhasil ditemukan'
-        // ];
-        // return response()->json($response, 200);
+        if ($request->ajax()) {
+            $tag = Tag::latest()->get();
+            return Datatables::of($tag)
+                ->addIndexColumn()
+                ->addColumn('aksi', function ($row) {
+                    $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" title="Edit" class="btn btn-warning btn-sm edit-tag"><i class="fa fa-pencil" style="color:white"></i></a>';
+                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" title="Hapus" class="btn btn-danger btn-sm hapus-tag"><i class="fa fa-trash" style="width:15px"></i></a>';         
+                    return $btn;
+                })
+                ->rawColumns(['aksi'])
+                ->make(true);
+        }
+        return view('backend.tag.index');
     }
 
     /**
@@ -46,7 +43,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('backend.tag.create');
+        //
     }
 
     /**
@@ -57,58 +54,19 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        $validator = Validator::make($input, [
-            'nama_tag' => 'required|unique:tags'
-        ]);
+        $slug = Str::slug($request->nama_tag, '-');
+        // dd($request->all());
+        // create
+            Tag::updateOrCreate(
+                ['id' => $request->id],
+                [
+                    'nama_tag' => $request->nama_tag,
+                    'slug' => $slug
+                ]
+            );
+        
 
-        if ($validator->fails()) {
-            $response = [
-                'Success' => false,
-                'data' => 'validation error.',
-                'message' => $validator->errors()
-            ];
-            return response()->json($response, 500);
-        }
-
-
-        $tag = new Tag;
-        $tag->nama_tag = $request->nama_tag;
-        $tag->slug = str_slug($request->nama_tag, '-');
-        $tag->save();
-
-        $response = [
-            'Success' => true,
-            'data' => $tag,
-            'message' => 'Tag berhasil ditambahkan'
-        ];
-        // return response()->json($response, 200);
-        return redirect()->route('tag.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $tag = Tag::find($id);
-        if (!$tag) {
-            $response = [
-                'Success' => false,
-                'data' => 'Empty',
-                'message' => 'Tag tidak ditemukan'
-            ];
-            return response()->json($response, 404);
-        }
-        $response = [
-            'Success' => true,
-            'data' => $tag,
-            'message' => 'Tag berhasil ditemukan'
-        ];
-        return response()->json($response, 200);
+        return response()->json(['success' => ' Berhasil di Simpan']);
     }
 
     /**
@@ -119,8 +77,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tag = Tag::findOrfail($id);
-        return view('backend.tag.edit', compact('tag'));
+        $tag = Tag::find($id);
+        return response()->json($tag);
     }
 
     /**
@@ -132,45 +90,7 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tag = Tag::find($id);
-        $input = $request->all();
-
-        if (!$tag) {
-            $response = [
-                'success' => false,
-                'data' => 'Empty',
-                'message' => 'Tag tidak ditemukan'
-            ];
-            return response()->json($response, 404);
-        }
-
-        $validator = Validator::make($input, [
-            'nama_tag' => 'required|unique:tags'
-        ]);
-
-        if ($validator->fails()) {
-            $response = [
-                'Success' => false,
-                'data' => 'validation error.',
-                'message' => $validator->errors()
-            ];
-            return response()->json($response, 500);
-        }
-
-        $tag->nama_tag = $input['nama_tag'];
-
-        $tag = Tag::findOrfail($id);
-        $tag->nama_tag = $request->nama_tag;
-        $tag->slug = str_slug($request->nama_tag, '-');
-        $tag->save();
-
-        $response = [
-            'Success' => true,
-            'data' => $tag,
-            'message' => 'Tag berhasil diupdate'
-        ];
-        // return response()->json($response, 200);
-        return redirect()->route('tag.index');
+        //
     }
 
     /**
@@ -181,25 +101,8 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        $tag = Tag::find($id);
-        if (!$tag) {
-            $response = [
-                'success' => false,
-                'data' => 'Gagal Hapus',
-                'message' => 'Tag tidak ditemukan'
-            ];
-            return response()->json($response, 404);
-        }
+        Tag::find($id)->delete();
 
-        $tag->delete();
-        $response = [
-            'success' => true,
-            'data' => $tag,
-            'message' => 'Tag berhasil dihapus.'
-        ];
-
-        // 6. tampilkan hasil
-        // return response()->json($response, 200);
-        return redirect()->route('tag.index');
+        return response()->json(['success'=>'Tag  deleted successfully.']);
     }
 }

@@ -75,7 +75,6 @@ class BudayaController extends Controller
             $budaya->foto = $filename;
         }
         $budaya->save();
-        $budaya->tag()->attach($request->tag);
 
         $response = [
             'Success' => true,
