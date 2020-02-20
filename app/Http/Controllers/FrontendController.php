@@ -17,9 +17,10 @@ class FrontendController extends Controller
     public function front()
     {
         $artikel = Artikel::orderBy('created_at', 'desc')->paginate(3);
+        $restoran = Restoran::all();
         $kategori = Kategori::all();
         $tag = Tag::all();
-        return view('frontend.front', compact('artikel', 'kategori', 'tag'));
+        return view('frontend.front', compact('artikel', 'restoran', 'kategori', 'tag'));
     }
 
     public function about()
@@ -126,7 +127,7 @@ class FrontendController extends Controller
 
     public function most()
     {
-        $artikel = Artikel::take(3)->get();
+        $artikel = Artikel::take(6)->get();
         $tag = Tag::all();
         $kategori = Kategori::all();
 
@@ -180,7 +181,7 @@ class FrontendController extends Controller
 
     public function budaya1()
     {
-        $budaya = Budaya::take(2)->get();
+        $budaya = Budaya::take(4)->get();
 
         $response = [
             'Success' => true,

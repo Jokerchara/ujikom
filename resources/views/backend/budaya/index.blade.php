@@ -22,12 +22,7 @@
     </div>
 <div class="box-body">
                 <center>
-                    <a class="btn btn-primary" href="{{ route('budaya.create') }}">Tambah Kategori</a>
-                </center>
-                <center>
-                    <a href="{{ route('budaya.create') }}"
-                        class="la la-cloud-upload btn btn-info btn-rounded btn-floating btn-outline"><i class="fa fa-plus"></i>
-                    </a>
+                    <a class="btn btn-primary" href="{{ route('budaya.create') }}">Tambah Budaya</a>
                 </center>
         <table id="bs4-table" class="table table-striped table-bordered" style="width:100%">
                         <thead>
@@ -52,13 +47,13 @@
                                     <form action="{{route('budaya.destroy', $data->id)}}" method="post">
                                         {{csrf_field()}}
 									<a href="{{route('budaya.edit', $data->id)}}"
-										class="zmdi zmdi-edit btn btn-warning btn-rounded btn-floating btn-outline"> <i class="fa fa-pencil  "></i>
+										class="btn btn-success btn-sm edit-budaya"> <i class="fa fa-pencil  "></i>
                                     </a>
                                     <a href="{{route('budaya.show', $data->id)}}"
-										class="zmdi zmdi-eye btn btn-success btn-rounded btn-floating btn-outline"> <i class="fa fa-eye  "></i>
+										class="btn btn-warning btn-sm lihat-data"> <i class="fa fa-eye  "></i>
 									</a>
 										<input type="hidden" name="_method" value="DELETE">
-										<button type="submit" class="zmdi zmdi-delete btn-rounded btn-floating btn btn-dangerbtn btn-danger btn-outline"> <i class="fa fa-trash  "></i></button>
+										<button type="submit" class="btn btn-danger btn-sm hapus-budaya"> <i class="fa fa-trash  "></i></button>
 									</form>
 								</td>
                             </tr>

@@ -14,10 +14,7 @@
 Route::get('/bawaan', function () {
     return view('welcome');
 });
-
-Route::get('/', function () {
-    return view('frontend.front');
-});
+route::get('/', 'FrontendController@front');
 
 Route::get('/about', function () {
     return view('frontend.about');
