@@ -163,7 +163,7 @@
                     <!-- Single Trending Post -->
                     @foreach($restoran as $data)
                     <div class="single-trending-post">
-                        <img src="{{ asset('assets/img/restoran/' .$data->foto)}}" alt="">
+                        <img src="{{ asset('assets/img/restoran/' .$data->foto)}}" style="height:200px; width:450px;" alt="">
                         <div class="post-content">
                             <a href="#" class="post-cata">Restaurant</a>
                             <a href="/singlerestoran/{{ $data->slug }}" class="post-title">{{ $data->nama }}</a>
@@ -205,13 +205,25 @@
                 <div class="section-heading">
                     <h5>Korean Culture</h5>
                 </div>
-                <div class="row">
-                    <!-- Single Blog Post -->
-                    <div class="col-12 col-lg-6 budaya-korea">
-                        <!-- isi -->
-                    </div>
-                </div>
 
+                <div class="sports-videos-slides owl-carousel mb-30">
+                    <!-- Single Featured Post -->
+                    @foreach($budaya as $data)
+                    <div class="single-featured-post">
+                        <div class="post-thumbnail mb-50">
+                            <img src="{{ asset('assets/img/budaya/' .$data->foto)}}" style="height:250px; width:400px;" alt="">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <a href="#">{{$data->created_at->format('d M Y')}}</a>
+                                <a href="#">Penulis : {{$data->user->name}}</a>
+                            </div>
+                            <a href="/singlebudaya/{{ $data->slug }}" class="post-title">{{ $data->judul }}</a>
+                            <p>{!! str_limit($data->konten,90) !!}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </div>
 
@@ -311,38 +323,6 @@
                             <div class="post-meta d-flex">
                                 <a href="/blog/${value.slug}"><i class="fa fa-eye" aria-hidden="true"></i> Selengkapnya</a>
                             </div>
-                            </div>
-                        </div>
-                        `
-                    )
-                })
-            },
-            error: function(gagal){
-                console.log(gagal)
-            }
-        })
-    </script>
-
-    {{-- KOREAN CULTURE --}}
-    <script>
-        var url = 'api/budaya1'
-        $.ajax({
-            url : url,
-            dataType: ' json ',
-            success: function(berhasil) {
-                $.each(berhasil.data.budaya, function(key, value) {
-                    console.log(value)
-                    $(".budaya-korea").append(
-                        `
-                        <div class="single-blog-post d-flex style-3 mb-30">
-                            <div class="post-thumbnail">
-                                <img src="assets/img/budaya/${value.foto}" alt="">
-                            </div>
-                            <div class="post-content">
-                                <a href="#" class="post-title">${value.judul}</a>
-                                <div class="post-meta d-flex">
-                                    <a href="/blsinglebudayaog/${value.slug}"><i class="fa fa-eye" aria-hidden="true"></i> Selengkapnya</a>
-                                </div>
                             </div>
                         </div>
                         `

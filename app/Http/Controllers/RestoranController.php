@@ -108,8 +108,7 @@ class RestoranController extends Controller
     public function edit($id)
     {
         $restoran = Restoran::findOrfail($id);
-        $select = $restoran->tag->pluck('id')->toArray();
-        return view('backend.restoran.edit', compact('restoran', 'select'));
+        return view('backend.restoran.edit', compact('restoran'));
     }
 
     /**

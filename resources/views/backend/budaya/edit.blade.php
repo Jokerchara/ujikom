@@ -29,11 +29,11 @@
                                     <input type="hidden" name="_method" value="PATCH">
                                     {{csrf_field()}}
                                     <div class="form-group">
-                                        <label for="">Judul</label>
+                                        <label for="">Nama Restoran</label>
                                         <input class="form-control
-                                        @error('judul') is-invalid @enderror" type="text"
-                                        name="judul" id="" value="{{$budaya->judul}}" required>
-                                        @error('judul')
+                                        @error('nama') is-invalid @enderror" type="text"
+                                        name="nama" id="" value="{{$restoran->nama}}" required>
+                                        @error('nama')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>
                                         </span>

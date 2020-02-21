@@ -16,23 +16,24 @@
     </script>
 
 @section('content')
-<section class="page-content container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                        <center>
-                                <div class="card-header">Edit Restoran</div>
-                            </center>
-
-                            <div class="card-body">
+<div class="box">
+  <div class="box-header with-border">
+    <center>    
+    <h3 class="box-title">Edit Restoran</h3>
+    </center>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+        <i class="fa fa-minus"></i></button>
+      </div>
+  </div><div class="card-body">
                                 <form action="{{route('restoran.update', $restoran->id)}}" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="_method" value="PATCH">
                                     {{csrf_field()}}
                                     <div class="form-group">
-                                        <label for="">Judul</label>
+                                        <label for="">Nama</label>
                                         <input class="form-control
                                         @error('judul') is-invalid @enderror" type="text"
-                                        name="judul" id="" value="{{$restoran->judul}}" required>
+                                        name="nama" id="" value="{{$restoran->nama}}" required>
                                         @error('judul')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>
@@ -62,7 +63,7 @@
                                         <label for="">Alamat</label>
                                         <input class="form-control
                                         @error('alamat') is-invalid @enderror" type="text"
-                                        name="alamat" id="" required>
+                                        name="alamat" id="" value="{{$restoran->alamat}}" required>
                                         @error('alamat')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>
@@ -88,8 +89,5 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+</div>
 @endsection

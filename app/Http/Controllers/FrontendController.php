@@ -18,9 +18,10 @@ class FrontendController extends Controller
     {
         $artikel = Artikel::orderBy('created_at', 'desc')->paginate(3);
         $restoran = Restoran::all();
+        $budaya = Budaya::all();
         $kategori = Kategori::all();
         $tag = Tag::all();
-        return view('frontend.front', compact('artikel', 'restoran', 'kategori', 'tag'));
+        return view('frontend.front', compact('artikel', 'budaya', 'restoran', 'kategori', 'tag'));
     }
 
     public function about()
