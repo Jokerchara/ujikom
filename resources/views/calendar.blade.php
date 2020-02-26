@@ -405,32 +405,39 @@
 
         <li>
           <a href="{{ route('restoran.index') }}">
-            <i class="fa fa-angle-double-right"></i> 
+            <i class="fa fa-angle-double-right"></i>
             <span>Restoran</span>
           </a>
         </li>
 
-        <li >
+        <li>
           <a href="{{ route('budaya.index') }}">
             <i class="fa fa-angle-double-right"></i>
             <span>Budaya</span>
           </a>
         </li>
         
-        <li >
-          <a href="{{ route('kategori.index') }}">
+        <li>
+          <a href="{{ url('admin/kategori') }}">
             <i class="fa fa-angle-double-right"></i>
             <span>Kategori</span>
           </a>
         </li>
 
-        <li >
-          <a href="{{ route('tag.index') }}">
+        <li>
+          <a href="{{ url('admin/tag') }}">
             <i class="fa fa-angle-double-right"></i>
             <span>Tag</span>
           </a>
         </li>
-        <li >
+
+        <li>
+          <a href="{{ url('admin/film') }}">
+            <i class="fa fa-angle-double-right"></i>
+            <span>Film</span>
+          </a>
+        </li>
+        <li>
           <a href="{{ route('calendar') }}">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
           </a>

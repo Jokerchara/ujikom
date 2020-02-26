@@ -21,19 +21,41 @@
             <div class="col-12">
                 <div class="card">
                         <center>
-                                <div class="card-header">Edit Budaya</div>
+                                <div class="card-header">Edit Film</div>
                             </center>
 
                             <div class="card-body">
-                                <form action="{{route('budaya.update', $budaya->id)}}" method="post" enctype="multipart/form-data">
+                                <form action="{{route('film.update', $film->id)}}" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="_method" value="PATCH">
                                     {{csrf_field()}}
                                     <div class="form-group">
-                                        <label for="">Nama Budaya</label>
+                                        <label for="">Nama Film</label>
                                         <input class="form-control
-                                        @error('judul') is-invalid @enderror" type="text"
-                                        name="judul" id="" value="{{$budaya->judul}}" required>
-                                        @error('judul')
+                                        @error('nama') is-invalid @enderror" type="text"
+                                        name="nama" id="" value="{{$film->nama}}" required>
+                                        @error('nama')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Rating</label>
+                                        <input class="form-control
+                                        @error('rating') is-invalid @enderror" type="text"
+                                        name="rating" id="" value="{{$film->rating}}" required>
+                                        @error('rating')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Pemain</label>
+                                        <input class="form-control
+                                        @error('pemain') is-invalid @enderror" type="text"
+                                        name="pemain" id="" value="{{$film->pemain}}" required>
+                                        @error('pemain')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>
                                         </span>
@@ -41,17 +63,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Foto</label>
-                                        @if (isset($budaya) && $budaya->foto)
+                                        @if (isset($film) && $film->foto)
                                             <p>
-                                                <img src="{{ asset('assets/img/budaya/'
-                                                .$budaya->foto.'') }}"
+                                                <img src="{{ asset('assets/img/film/'
+                                                .$film->foto.'') }}"
                                                 style="margin-top:15px;margin-bottom:15px;
                                                 max-height:100px;border:1px;border-color:black;" alt="">
                                             </p>
                                         @endif
                                         <input class="form-control
                                         @error('foto') is-invalid @enderror" type="file"
-                                        name="foto" id="" value="{{$budaya->foto}}">
+                                        name="foto" id="" value="{{$film->foto}}">
                                         @error('foto')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>

@@ -38,7 +38,7 @@
                         <div class="single-sidebar-widget p-30 berita-berita">
                             <!-- Section Title -->
                             <div class="section-heading">
-                                <h5>Trending</h5>
+                                <h5>K - Pop</h5>
                             </div>
 
                             {{-- Konten --}}
@@ -64,7 +64,7 @@
                     <div class="  mt-30 mb-30 p-30 box-shadow " style="single-post" >
                         <div class="trending-now-posts mb-30 restoran-korea">
                             <div class="section-heading">
-                                <h5>TRENDING NOW</h5>
+                                <h5>Korean Restaurant</h5>
                             </div>
                         </div>
                     </div>

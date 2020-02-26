@@ -62,7 +62,7 @@
                                             @enderror
                                         </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-outline-info btn-rounded btn-block">
+                                        <button type="submit" class="btn btn-primary">
                                             Simpan Data
                                         </button>
                                     </div>

@@ -21,6 +21,7 @@ Route::get('most', 'FrontendController@most');
 Route::get('trending', 'FrontendController@trending');
 Route::get('kpop', 'FrontendController@kpop');
 Route::get('restoran1', 'FrontendController@restoran1');
+Route::get('film1', 'FrontendController@film1');
 Route::get('budaya1', 'FrontendController@budaya1');
 Route::get('kategori', 'FrontendController@kategori');
 Route::get('tag', 'FrontendController@tag');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Restoran;
+use App\Film;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -10,7 +10,7 @@ use Session;
 use Auth;
 use File;
 
-class RestoranController extends Controller
+class FilmController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class RestoranController extends Controller
      */
     public function index()
     {
-        $restoran = Restoran::orderBy('created_at', 'desc')->get();
-        return view('backend.restoran.index', compact('restoran'));
+        $film = Film::orderBy('created_at', 'desc')->get();
+        return view('backend.film.index', compact('film'));
     }
 
     /**
@@ -30,7 +30,7 @@ class RestoranController extends Controller
      */
     public function create()
     {
-        return view('backend.restoran.create');
+        return view('backend.film.create');
     }
 
     /**
@@ -43,10 +43,11 @@ class RestoranController extends Controller
     {
         $input = $request->all();
         $validator = Validator::make($input, [
-            'nama' => 'required|unique:restorans',
+            'judul' => 'required|unique:films',
             'konten' => 'required|min:50',
+            'rating' => 'required',
+            'pemain' => 'required|min:10',
             'foto' => 'required|mimes:jpeg,jpg,png,gif|max:2048',
-            'alamat' => 'required|unique:restorans',
         ]);
 
         if ($validator->fails()) {
@@ -58,33 +59,34 @@ class RestoranController extends Controller
             return response()->json($response, 500);
         }
 
-        $restoran = new Restoran();
-        $restoran->nama = $request->nama;
-        $restoran->slug = str_slug($request->nama, '-');
-        $restoran->konten = $request->konten;
-        $restoran->alamat = $request->alamat;
-        $restoran->id_user = Auth::user()->id;
+        $film = new Film();
+        $film->judul = $request->judul;
+        $film->slug = str_slug($request->judul, '-');
+        $film->rating = $request->rating;
+        $film->pemain = $request->pemain;
+        $film->konten = $request->konten;
+        $film->id_user = Auth::user()->id;
         // foto
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $path = public_path() . '/assets/img/restoran';
+            $path = public_path() . '/assets/img/film';
             $filename = str_random(6) . '_'
                 . $file->getClientOriginalName();
             $upload = $file->move(
                 $path,
                 $filename
             );
-            $restoran->foto = $filename;
+            $film->foto = $filename;
         }
-        $restoran->save();
+        $film->save();
 
         $response = [
             'Success' => true,
-            'data' => $restoran,
-            'message' => 'Restoran berhasil ditemukan'
+            'data' => $film,
+            'message' => 'Film berhasil dibuat'
         ];
         // return response()->json($response, 200);
-        return redirect()->route('restoran.index');
+        return redirect()->route('film.index');
     }
 
     /**
@@ -95,8 +97,8 @@ class RestoranController extends Controller
      */
     public function show($id)
     {
-        $restoran = Restoran::findOrFail($id);
-        return view('backend.restoran.show', compact('restoran'));
+        $film = Film::findOrFail($id);
+        return view('backend.film.show', compact('film'));
     }
 
     /**
@@ -107,8 +109,8 @@ class RestoranController extends Controller
      */
     public function edit($id)
     {
-        $restoran = Restoran::findOrfail($id);
-        return view('backend.restoran.edit', compact('restoran'));
+        $film = Film::findOrfail($id);
+        return view('backend.film.edit', compact('film'));
     }
 
     /**
@@ -122,7 +124,7 @@ class RestoranController extends Controller
     {
         $input = $request->all();
         $validator = Validator::make($input, [
-            'nama' => 'required',
+            'judul' => 'required',
             'konten' => 'required|min:50',
         ]);
 
@@ -135,15 +137,17 @@ class RestoranController extends Controller
             return response()->json($response, 500);
         }
 
-        $restoran = Restoran::findOrFail($id);
-        $restoran->nama = $request->nama;
-        $restoran->slug = str_slug($request->nama, '-');
-        $restoran->konten = $request->konten;
-        $restoran->id_user = Auth::user()->id;
+        $film = Film::findOrFail($id);
+        $film->judul = $request->judul;
+        $film->slug = str_slug($request->judul, '-');
+        $film->rating = $request->rating;
+        $film->pemain = $request->pemain;
+        $film->konten = $request->konten;
+        $film->id_user = Auth::user()->id;
         // foto
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $path = public_path() . '/assets/img/restoran/';
+            $path = public_path() . '/assets/img/film/';
             $filename = str_random(6) . '_'
                 . $file->getClientOriginalName();
             $uploadSuccess = $file->move(
@@ -151,28 +155,28 @@ class RestoranController extends Controller
                 $filename
             );
             // hapus foto lama jika ada
-            if ($restoran->foto) {
-                $old_foto = $restoran->foto;
+            if ($film->foto) {
+                $old_foto = $film->foto;
                 $filepath = public_path() .
-                    '/assets/img/restoran/' .
-                    $restoran->foto;
+                    '/assets/img/film/' .
+                    $film->foto;
                 try {
                     File::delete($filepath);
                 } catch (FileNotFoundException $e) {
                     // file sudah dihapus/tidak ada
                 }
             }
-            $restoran->foto = $filename;
+            $film->foto = $filename;
         }
-        $restoran->save();
+        $film->save();
 
         $response = [
             'Success' => true,
-            'data' => $restoran,
-            'message' => 'Restoran berhasil ditambahkan'
+            'data' => $film,
+            'message' => 'Film berhasil diedit'
         ];
         // return response()->json($response, 200);
-        return redirect()->route('restoran.index');
+        return redirect()->route('film.index');
     }
 
     /**
@@ -183,36 +187,36 @@ class RestoranController extends Controller
      */
     public function destroy($id)
     {
-        $restoran = Restoran::findOrFail($id);
-        $blog = Restoran::findOrfail($id);
-        if ($restoran->foto) {
-            $old_foto = $restoran->foto;
+        $film = Film::findOrFail($id);
+        $blog = Film::findOrfail($id);
+        if ($film->foto) {
+            $old_foto = $film->foto;
             $filepath = public_path()
-                . '/assets/img/restoran/' . $restoran->foto;
+                . '/assets/img/film/' . $film->foto;
             try {
                 File::delete($filepath);
             } catch (FileNotFoundException $e) {
                 // file sudah dihapus/tidak ada
             }
         }
-        if (!$restoran) {
+        if (!$film) {
             $response = [
                 'success' => false,
                 'data' => 'Gagal Hapus',
-                'message' => 'Restoran tidak ditemukan'
+                'message' => 'film tidak ditemukan'
             ];
             return response()->json($response, 404);
         }
 
-        $restoran->delete();
+        $film->delete();
         $response = [
             'success' => true,
-            'data' => $restoran,
-            'message' => 'restoran berhasil dihapus.'
+            'data' => $film,
+            'message' => 'film berhasil dihapus.'
         ];
 
         // 6. tampilkan hasil
         // return response()->json($response, 200);
-        return redirect()->route('restoran.index');
+        return redirect()->route('film.index');
     }
 }

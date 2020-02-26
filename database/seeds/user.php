@@ -12,8 +12,8 @@ class user extends Seeder
     public function run()
     {
         App\User::create([
-            'name' => 'Nur Yachya',
-            'email' => 'Nuryachya@gmail.com',
+            'name' => 'Albi',
+            'email' => 'Albi@gmail.com',
             'password' => bcrypt('einshearth1111')
         ]);
     }

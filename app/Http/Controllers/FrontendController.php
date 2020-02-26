@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tag;
+use App\Film;
 use App\Restoran;
 use App\Budaya;
 use App\Artikel;
@@ -19,9 +20,10 @@ class FrontendController extends Controller
         $artikel = Artikel::orderBy('created_at', 'desc')->paginate(3);
         $restoran = Restoran::all();
         $budaya = Budaya::all();
+        $film = Film::all();
         $kategori = Kategori::all();
         $tag = Tag::all();
-        return view('frontend.front', compact('artikel', 'budaya', 'restoran', 'kategori', 'tag'));
+        return view('frontend.front', compact('artikel', 'film', 'budaya', 'restoran', 'kategori', 'tag'));
     }
 
     public function about()
@@ -71,6 +73,14 @@ class FrontendController extends Controller
         $kategori = Kategori::all();
         $tag = Tag::all();
         return view('frontend.single-restoran',compact ('restoran', 'kategori', 'tag'));
+    }
+
+    public function singlefilm()
+    {
+        $film = film::orderBy('rating', 'desc')->paginate(4);
+        $kategori = Kategori::all();
+        $tag = Tag::all();
+        return view('frontend.single-film',compact ('film', 'kategori', 'tag'));
     }
 
     public function blog()
@@ -170,12 +180,24 @@ class FrontendController extends Controller
 
     public function restoran1()
     {
-        $restoran = Restoran::take(2)->get();
+        $restoran = Restoran::all();
 
         $response = [
             'Success' => true,
             'data' => ['restoran' => $restoran],
             'message' => 'Restoran berhasil ditemukan'
+        ];
+        return response()->json($response, 200);
+    }
+
+    public function film1()
+    {
+        $film = Film::take(4)->get();
+
+        $response = [
+            'Success' => true,
+            'data' => ['film' => $film],
+            'message' => 'Film berhasil ditemukan'
         ];
         return response()->json($response, 200);
     }

@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>Albi Nur || XII RPL 1</title>
+    <title>{{ Auth::user()->name }} || XII RPL 1</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('assets/frontend/img/core-img/k3.png')}}">
     
@@ -72,7 +72,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Albi</b>Nur</span>
+      <span class="logo-lg"><b>Korean</b>Hangout</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -340,8 +340,8 @@
                 <img src="/images/user2-160x160.jpg" class="rounded float-left" alt="User Image">
 				
                 <p>
-                  Fox Template
-                  <small>Member since April . 2016</small>
+                  {{ Auth::user()->name }}
+                  <small>{{ Auth::user()->created_at->format('d M Y') }}</small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -380,7 +380,7 @@
           <img src="/images/user2-160x160.jpg" class="rounded" alt="User Image">
         </div>
         <div class="info float-left">
-          <p>Fox Template</p>
+          <p>{{ Auth::user()->name }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
 		  <!-- search form -->
@@ -439,6 +439,13 @@
             <span>Tag</span>
           </a>
         </li>
+
+        <li>
+          <a href="{{ url('admin/film') }}">
+            <i class="fa fa-angle-double-right"></i>
+            <span>Film</span>
+          </a>
+        </li>
         <li>
           <a href="{{ route('calendar') }}">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -446,15 +453,6 @@
         </li>
       </ul>
     </section>
-    <!-- /.sidebar -->
-    <div class="sidebar-footer">
-		<!-- item-->
-		<a href="#" class="link" data-toggle="tooltip" title="" data-original-title="Settings"><i class="fa fa-cog fa-spin"></i></a>
-		<!-- item-->
-		<a href="#" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i class="fa fa-envelope"></i></a>
-		<!-- item-->
-		<a href="#" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="fa fa-power-off"></i></a>
-	</div>
   </aside>
 
   <!-- Content Wrapper. Contains page content -->

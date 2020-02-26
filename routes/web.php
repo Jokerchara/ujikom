@@ -77,12 +77,22 @@ Route::group(
         Route::delete('/budaya-destroy/{id}', 'BudayaController@destroy');
 
         //Restoran
+        route::get('restoran', 'RestoranController@index');
+        route::post('restoran-store', 'RestoranController@store');
+        Route::get('/restoran/{id}/edit', 'RestoranController@edit');
+        Route::delete('/restoran-destroy/{id}', 'RestoranController@destroy');
 
-
+        //Film
+        route::get('film', 'FilmController@index');
+        route::post('film-store', 'FilmController@store');
+        Route::get('/film/{id}/edit', 'FilmController@edit');
+        Route::delete('/film-destroy/{id}', 'FilmController@destroy');
+        
         //Artikel
         route::resource('artikel', 'ArtikelController');
         route::resource('restoran', 'RestoranController');
         route::resource('budaya', 'BudayaController');
+        route::resource('film', 'FilmController');
         route::resource('calendar', 'CalendarController');
     }
 );
