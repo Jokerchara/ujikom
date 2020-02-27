@@ -61,6 +61,7 @@ class BudayaController extends Controller
         $budaya->judul = $request->judul;
         $budaya->slug = str_slug($request->judul, '-');
         $budaya->konten = $request->konten;
+        $budaya->url = $request->url;
         $budaya->id_user = Auth::user()->id;
         // foto
         if ($request->hasFile('foto')) {
@@ -138,6 +139,7 @@ class BudayaController extends Controller
         $budaya->judul = $request->judul;
         $budaya->slug = str_slug($request->judul, '-');
         $budaya->konten = $request->konten;
+        $budaya-> url = $request->url;
         $budaya->id_user = Auth::user()->id;
         // foto
         if ($request->hasFile('foto')) {

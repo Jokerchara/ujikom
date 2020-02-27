@@ -19,6 +19,7 @@ class CreateFilmsTable extends Migration
             $table->String('slug');
             $table->double('rating');
             $table->String('pemain');
+            $table->text('url');
             $table->text('konten');
             $table->String('foto');
             $table->unsignedBigInteger('id_user');

@@ -40,6 +40,17 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Url</label>
+                                        <input class="form-control
+                                        @error('url') is-invalid @enderror" type="text"
+                                        name="url" id="" value="{{$budaya->url}}" required>
+                                        @error('url')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label for="">Foto</label>
                                         @if (isset($budaya) && $budaya->foto)
                                             <p>

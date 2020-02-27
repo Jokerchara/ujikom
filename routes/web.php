@@ -104,8 +104,8 @@ Route::group(
         route::get('restoran', 'FrontendController@restoran');
         route::get('about', 'FrontendController@about');
         route::get('blog', 'FrontendController@blog');
-        route::get('singlebudaya/{budaya}', 'FrontendController@singlebudaya');
-        route::get('singlerestoran/{restoran}', 'FrontendController@singlerestoran');
+        route::get('blogbudaya/{budaya}', 'FrontendController@singlebudaya');
+        route::get('blogrestoran/{restoran}', 'FrontendController@singlerestoran');
         route::get('contact', 'FrontendController@contact');
         route::get('services', 'FrontendController@services');
         route::get('blog/{artikel}', 'FrontendController@singleblog');
@@ -113,10 +113,6 @@ Route::group(
         route::get('blog-kategori/{kategori}', 'FrontendController@blogkategori');
     }
 );
-
-// Route::resource('kategori', 'KategoriController');
-// Route::resource('artikel', 'ArtikelController');
-// Route::resource('tag', 'TagController');
 
 Auth::routes();
 

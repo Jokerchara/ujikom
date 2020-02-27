@@ -59,25 +59,22 @@ class FrontendController extends Controller
         return view('frontend.budaya');
     }
 
-    public function singlebudaya()
+    public function singlebudaya(Budaya $budaya)
     {
-        $budaya = Budaya::orderBy('created_at', 'desc')->paginate(4);
         $kategori = Kategori::all();
         $tag = Tag::all();
         return view('frontend.single-budaya',compact ('budaya', 'kategori', 'tag'));
     }
 
-    public function singlerestoran()
+    public function singlerestoran(Restoran $restoran)
     {
-        $restoran = Restoran::orderBy('created_at', 'desc')->paginate(4);
         $kategori = Kategori::all();
         $tag = Tag::all();
         return view('frontend.single-restoran',compact ('restoran', 'kategori', 'tag'));
     }
 
-    public function singlefilm()
+    public function singlefilm(Film $film)
     {
-        $film = film::orderBy('rating', 'desc')->paginate(4);
         $kategori = Kategori::all();
         $tag = Tag::all();
         return view('frontend.single-film',compact ('film', 'kategori', 'tag'));

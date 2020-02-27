@@ -40,6 +40,28 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Url</label>
+                                        <input class="form-control
+                                        @error('url') is-invalid @enderror" type="text"
+                                        name="url" id="" value="{{$artikel->url}}" required>
+                                        @error('url')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">YouTube</label>
+                                        <input class="form-control
+                                        @error('ytube') is-invalid @enderror" type="text"
+                                        name="ytube" id="" value="{{$artikel->ytube}}" required>
+                                        @error('ytube')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label for="">Foto</label>
                                         @if (isset($artikel) && $artikel->foto)
                                             <p>

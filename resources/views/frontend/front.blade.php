@@ -58,11 +58,22 @@
                 <div class="section-heading">
                     <h5>Korean Film</h5>
                 </div>
-
                 <!-- Single Blog Post -->
+                @foreach($film as $data)
                 <div class="single-blog-post d-flex korea-film">
-                <!-- film -->
+                <div class="single-blog-post d-flex style-3">
+                    <div class="post-thumbnail">
+                        <img src="{{ asset('assets/img/film/' .$data->foto)}}" alt="">
+                        </div>
+                        <div class="post-content">
+                            <a href="/blogfilm/{{ $data->slug }}" class="post-title">{{ $data->judul }}</a>
+                            <div class="post-meta d-flex">
+                                <a href="#"><i class="fa fa-star" aria-hidden="true"></i> {{ $data->rating }} </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                @endforeach
             </div>
 
             <!-- Sidebar Widget -->
@@ -96,7 +107,7 @@
                         <img src="{{ asset('assets/img/restoran/' .$data->foto)}}" style="height:200px; width:450px;" alt="">
                         <div class="post-content">
                             <a href="#" class="post-cata">Restaurant</a>
-                            <a href="/singlerestoran/{{ $data->slug }}" class="post-title">{{ $data->nama }}</a>
+                            <a href="/blogrestoran/{{ $data->slug }}" class="post-title">{{ $data->nama }}</a>
                         </div>
                     </div>
                     @endforeach
@@ -148,7 +159,7 @@
                                 <a href="#">{{$data->created_at->format('d M Y')}}</a>
                                 <a href="#">Penulis : {{$data->user->name}}</a>
                             </div>
-                            <a href="/singlebudaya/{{ $data->slug }}" class="post-title">{{ $data->judul }}</a>
+                            <a href="/blogbudaya/{{ $data->slug }}" class="post-title">{{ $data->judul }}</a>
                             <p>{!! str_limit($data->konten,90) !!}</p>
                         </div>
                     </div>
@@ -171,8 +182,6 @@
                     <a href="#" class="twitter-followers"><i class="fa fa-twitter"></i> 3,280 <span>Followers</span></a>
                     <!-- YouTube -->
                     <a href="#" class="youtube-subscribers"><i class="fa fa-youtube"></i> 1250 <span>Subscribers</span></a>
-                    <!-- Google -->
-                    <a href="#" class="google-followers"><i class="fa fa-google-plus"></i> 4,230 <span>Followers</span></a>
                 </div>
             </div>
 
@@ -208,37 +217,6 @@
     </section>
 @endsection
 @push('script')
-{{-- ARTIKEL POPULER --}}
-    <script>
-        var url = 'api/film1'
-        $.ajax({
-            url : url,
-            dataType: ' json ',
-            success: function(berhasil) {
-                $.each(berhasil.data.film, function(key, value) {
-                    console.log(value)
-                    $(".korea-film").append(
-                        `
-                        <div class="single-blog-post d-flex style-3">
-                            <div class="post-thumbnail">
-                                <img src="assets/img/film/${value.foto}" alt="">
-                            </div>
-                            <div class="post-content">
-                                <a href="/singlefilm/${value.slug}" class="post-title">${value.judul}</a>
-                            <div class="post-meta d-flex">
-                                <a href="#"><i class="fa fa-star" aria-hidden="true"></i>${value.rating}</a>
-                            </div>
-                            </div>
-                        </div>
-                        `
-                    )
-                })
-            },
-            error: function(gagal){
-                console.log(gagal)
-            }
-        })
-    </script>
 
 {{-- ARTIKEL POPULER --}}
     <script>

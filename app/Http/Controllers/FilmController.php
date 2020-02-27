@@ -64,6 +64,7 @@ class FilmController extends Controller
         $film->slug = str_slug($request->judul, '-');
         $film->rating = $request->rating;
         $film->pemain = $request->pemain;
+        $film->url = $request->url;
         $film->konten = $request->konten;
         $film->id_user = Auth::user()->id;
         // foto
@@ -142,6 +143,7 @@ class FilmController extends Controller
         $film->slug = str_slug($request->judul, '-');
         $film->rating = $request->rating;
         $film->pemain = $request->pemain;
+        $film->url = $request->url;
         $film->konten = $request->konten;
         $film->id_user = Auth::user()->id;
         // foto

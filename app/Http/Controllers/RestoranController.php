@@ -63,6 +63,7 @@ class RestoranController extends Controller
         $restoran->slug = str_slug($request->nama, '-');
         $restoran->konten = $request->konten;
         $restoran->alamat = $request->alamat;
+        $restoran->url = $request->url;
         $restoran->id_user = Auth::user()->id;
         // foto
         if ($request->hasFile('foto')) {
@@ -139,6 +140,8 @@ class RestoranController extends Controller
         $restoran->nama = $request->nama;
         $restoran->slug = str_slug($request->nama, '-');
         $restoran->konten = $request->konten;
+        $restoran->alamat = $request->alamat;
+        $restoran->url = $request->url;
         $restoran->id_user = Auth::user()->id;
         // foto
         if ($request->hasFile('foto')) {

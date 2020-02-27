@@ -18,6 +18,8 @@ class CreateArtikelsTable extends Migration
             $table->String('judul');
             $table->String('slug');
             $table->text('konten');
+            $table->text('url');
+            $table->text('ytube');
             $table->String('foto');
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');

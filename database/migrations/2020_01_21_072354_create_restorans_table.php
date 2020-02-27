@@ -19,7 +19,8 @@ class CreateRestoransTable extends Migration
             $table->String('slug');
             $table->text('konten');
             $table->String('alamat');
-            $table->String('foto');
+            $table->text('url');
+            $table->string('foto');
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

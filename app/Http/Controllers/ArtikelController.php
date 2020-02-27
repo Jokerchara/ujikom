@@ -83,6 +83,8 @@ class ArtikelController extends Controller
         $artikel->judul = $request->judul;
         $artikel->slug = str_slug($request->judul, '-');
         $artikel->konten = $request->konten;
+        $artikel->url = $request->url;
+        $artikel->ytube = $request->ytube;
         $artikel->id_user = Auth::user()->id;
         $artikel->id_kategori = $request->id_kategori;
         // foto
@@ -181,6 +183,8 @@ class ArtikelController extends Controller
         $artikel->judul = $request->judul;
         $artikel->slug = str_slug($request->judul, '-');
         $artikel->konten = $request->konten;
+        $artikel->url = $request->url;
+        $artikel->ytube = $request->ytube;
         $artikel->id_user = Auth::user()->id;
         $artikel->id_kategori = $request->id_kategori;
         // foto
