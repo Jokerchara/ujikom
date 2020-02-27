@@ -52,7 +52,8 @@
                             <p>{!! $restoran->konten !!}</p>
                             <img src="/assets/frontend/img/core-img/mapblue.png" style="height:25px; width: 20px;"><a href="{{$restoran->url}}">{{$restoran->alamat}}</a>
                             <br>
-                            <iframe src="{{$restoran->url}}" width="750" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                            <br>
+                            <iframe src="{{$restoran->url}}" width="1050" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                         </div>
                     </div>
                 </div>
