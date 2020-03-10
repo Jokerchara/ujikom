@@ -1,11 +1,11 @@
 @extends('layouts.frontend')
 @section('content')
-    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(assets/frontend/img/core-img/restoran2.jpg);">
+    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(../assets/frontend/img/bg-img/culture1.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcrumb-content">
-                        <h2>Korean Restaurant</h2>
+                        <h2></h2>
                     </div>
                 </div>
             </div>
@@ -62,9 +62,9 @@
                     <<<<<<<<<<<<<<<<<<<<< -->
                  <div class="col-12 col-xl-8">
                     <div class="  mt-30 mb-30 p-30 box-shadow " style="single-post" >
-                        <div class="trending-now-posts mb-30 restoran-korea">
+                        <div class="trending-now-posts mb-30 film-korea">
                             <div class="section-heading">
-                                <h5>Korean Restaurant</h5>
+                                <h5>Korean Film</h5>
                             </div>
                         </div>
                     </div>
@@ -111,19 +111,19 @@
 
 {{-- ARTIKEL TRENDING --}}
     <script>
-        var url = 'api/restoran1'
+        var url = 'api/film2'
         $.ajax({
             url : url,
             dataType: ' json ',
             success: function(berhasil) {
-                $.each(berhasil.data.restoran, function(key, value) {
+                $.each(berhasil.data.film, function(key, value) {
                     console.log(berhasil)
-                    $(".restoran-korea").append(
+                    $(".film-korea").append(
                         `
                      <div class="single-featured-post">
                         <!-- Thumbnail -->
                         <div class="post-thumbnail mb-50">
-                            <img src="assets/img/restoran/${value.foto}" style="height:300px; width:450px;" alt="">
+                            <img src="assets/img/film/${value.foto}" style="height:300px; width:450px;" alt="">
                         </div>
                         <!-- Post Contetnt -->
                         <div class="post-content">
@@ -131,7 +131,7 @@
                                 <a href="#">${value.created_at}</a>
                                 <a href="#">lifestyle</a>
                             </div>
-                            <a href="/singlerestoran/${value.slug}" class="post-title">${value.nama}</a>
+                            <a href="/blogfilm/${value.slug}" class="post-title">${value.judul}</a>
                             <p >${value.konten}</p>
                         </div>
                     </div>

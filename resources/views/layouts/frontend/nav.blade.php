@@ -27,13 +27,14 @@
                             <div class="classynav">
                                 <ul>
                                     <li class="active"><a href="{{url('/')}}">News</a></li>
+                                    <li class="active"><a href="{{url('kpop')}}">K-Pop</a></li>
+                                    <li class="active"><a href="{{url('film')}}">Film</a></li>
                                     <li><a href="#">About Korea</a>
                                         <ul class="dropdown">
                                             <li><a href="{{url('restoran')}}">Restoran Korea</a></li>
                                             <li><a href="{{url('budaya')}}">Budaya Korea</a></li>
                                         </ul>
                                     </li>
-                                    <li class="active"><a href="#">Film</a></li>
                                     <li><a href="{{url('about')}}">About</a></li>
                                     {{-- <li><a href="/blog/">Archive</a></li>
                                     <li><a href="#">Pages</a>

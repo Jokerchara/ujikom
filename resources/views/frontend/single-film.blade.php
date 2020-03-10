@@ -29,19 +29,17 @@
             <div class="row">
                 <div class="col-12">
                     <div class="single-video-area bg-white mb-30 box-shadow">
-                        <iframe width="560" height="315" src="{{$budaya->url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="{{$film->url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="post-details-content bg-white mb-30 p-30 box-shadow "  style="single-post">
-                        <div class="blog-thumb mb-30">
-                            <img src="{{ asset('assets/img/budaya/' .$budaya->foto)}}" style="height:300px; width:450px;" alt="">
-                        </div>
                         <div class="blog-content">
                             <div class="post-meta">
-                                <a href="#">{{$budaya->created_at->format('d M Y')}}</a>
-                                <a href="#">Penulis : {{$budaya->user->name}}</a>
+                                <a href="#">{{$film->created_at->format('d M Y')}}</a>
+                                <a href="#">Penulis : {{$film->user->name}}</a>
                             </div>
-                            <h4 class="post-title">{{ $budaya->judul }}</h4>
-                            <p>{!! $budaya->konten !!}</p>
+                            <h4 class="post-title">{{ $film->judul }}</h4>
+                            <p>Pemain : {{$film->pemain}}</p>
+                            <p>{!! $film->konten !!}</p>
                         </div>
                     </div>
                 </div>

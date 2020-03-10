@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
-    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(../assets/frontend/img/bg-img/korea1.jpg);">
+    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(assets/frontend/img/core-img/budaya1.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">

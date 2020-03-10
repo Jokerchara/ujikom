@@ -252,7 +252,7 @@
 
 {{-- ARTIKEL TRENDING --}}
     <script>
-        var url = 'api/kpop'
+        var url = 'api/kpop1'
         $.ajax({
             url : url,
             dataType: ' json ',

@@ -59,12 +59,23 @@ class FrontendController extends Controller
         return view('frontend.budaya');
     }
 
+    public function kpop()
+    {
+        return view('frontend.kpop');
+    }
+
+    public function film()
+    {
+        return view('frontend.film');
+    }
+
     public function singlebudaya(Budaya $budaya)
     {
         $kategori = Kategori::all();
         $tag = Tag::all();
         return view('frontend.single-budaya',compact ('budaya', 'kategori', 'tag'));
     }
+    
 
     public function singlerestoran(Restoran $restoran)
     {
@@ -147,7 +158,7 @@ class FrontendController extends Controller
         return response()->json($response, 200);
     }
 
-    public function kpop()
+    public function kpop1()
     {
         $artikel = Artikel::take(1)->get();
         $tag = Tag::all();
@@ -171,6 +182,30 @@ class FrontendController extends Controller
             'Success' => true,
             'data' => ['artikel' => $artikel, 'tag' => $tag, 'kategori' => $kategori],
             'message' => 'Artikel berhasil ditemukan'
+        ];
+        return response()->json($response, 200);
+    }
+
+    public function kpop2()
+    {
+        $artikel = Artikel::all();
+
+        $response = [
+            'Success' => true,
+            'data' => ['artikel' => $artikel],
+            'message' => 'Kpop berhasil ditemukan'
+        ];
+        return response()->json($response, 200);
+    }
+
+    public function film2()
+    {
+        $film = Film::all();
+
+        $response = [
+            'Success' => true,
+            'data' => ['film' => $film],
+            'message' => 'film berhasil ditemukan'
         ];
         return response()->json($response, 200);
     }
@@ -201,7 +236,7 @@ class FrontendController extends Controller
 
     public function budaya1()
     {
-        $budaya = Budaya::take(4)->get();
+        $budaya = Budaya::all();
 
         $response = [
             'Success' => true,

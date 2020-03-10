@@ -101,11 +101,14 @@ Route::group(
     ['prefix' => '/'],
     function () {
         route::get('budaya', 'FrontendController@budaya');
+        route::get('kpop', 'FrontendController@kpop');
+        route::get('film', 'FrontendController@film');
         route::get('restoran', 'FrontendController@restoran');
         route::get('about', 'FrontendController@about');
         route::get('blog', 'FrontendController@blog');
         route::get('blogbudaya/{budaya}', 'FrontendController@singlebudaya');
         route::get('blogrestoran/{restoran}', 'FrontendController@singlerestoran');
+        route::get('blogfilm/{film}', 'FrontendController@singlefilm');
         route::get('contact', 'FrontendController@contact');
         route::get('services', 'FrontendController@services');
         route::get('blog/{artikel}', 'FrontendController@singleblog');
