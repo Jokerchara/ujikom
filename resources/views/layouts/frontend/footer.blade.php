@@ -10,11 +10,7 @@
                     </div>
                 </div>
                 <!-- Footer Widget Area -->
-                <div class="col-6 col-sm-7 col-lg-4">
-                    <div class="footer-widget">
-                        <a href="{{url('/')}}" class="foo-logo"><img src="{{ asset('assets/frontend/img/core-img/logo1.png')}}" alt=""></a>
-                    </div>
-                </div>
+                
             </div>
         </div>
 

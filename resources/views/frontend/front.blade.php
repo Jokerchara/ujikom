@@ -152,7 +152,7 @@
                     @foreach($budaya as $data)
                     <div class="single-featured-post">
                         <div class="post-thumbnail mb-50">
-                            <img src="{{ asset('assets/img/budaya/' .$data->foto)}}" style="height:250px; width:400px;" alt="">
+                            <img src="{{ asset('assets/img/budaya/' .$data->foto)}}" style="height:350px; width:500px;" alt="">
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
@@ -172,19 +172,6 @@
          Post Right Sidebar Area
         <<<<<<<<<<<<<<<<<<<<< -->
         <div class="post-sidebar-area right-sidebar mt-30 mb-30 box-shadow">
-            <!-- Sidebar Widget -->
-            <div class="single-sidebar-widget p-30">
-                <!-- Social Followers Info -->
-                <div class="social-followers-info">
-                    <!-- Facebook -->
-                    <a href="#" class="facebook-fans"><i class="fa fa-facebook"></i> 4,360 <span>Fans</span></a>
-                    <!-- Twitter -->
-                    <a href="#" class="twitter-followers"><i class="fa fa-twitter"></i> 3,280 <span>Followers</span></a>
-                    <!-- YouTube -->
-                    <a href="#" class="youtube-subscribers"><i class="fa fa-youtube"></i> 1250 <span>Subscribers</span></a>
-                </div>
-            </div>
-
             <!-- Sidebar Widget -->
             <div class="single-sidebar-widget p-30 ">
                 <div class="section-heading">

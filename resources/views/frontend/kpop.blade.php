@@ -1,11 +1,11 @@
 @extends('layouts.frontend')
 @section('content')
-    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(assets/frontend/img/bg-img/k1.jpg);">
+    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(assets/frontend/img/bg-img/kpop1.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcrumb-content">
-                        <h2>Korean Culture</h2>
+                        <h2>K-Pop</h2>
                     </div>
                 </div>
             </div>
@@ -117,7 +117,8 @@
             dataType: ' json ',
             success: function(berhasil) {
                 $.each(berhasil.data.artikel, function(key, value) {
-                    console.log(berhasil)
+                    var teks = (value.konten).substr(0, 395);
+                    console.log(teks)
                     $(".kpop-korea").append(
                         `
                      <div class="single-featured-post">
@@ -132,7 +133,7 @@
                                 <a href="#">lifestyle</a>
                             </div>
                             <a href="/blog/${value.slug}" class="post-title">${value.judul}</a>
-                            <p >${value.konten}</p>
+                            <p id="teks-konten">`+teks+`....</p>
                         </div>
                     </div>
                         `

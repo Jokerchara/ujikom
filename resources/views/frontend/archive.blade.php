@@ -1,16 +1,8 @@
 @extends('layouts.frontend')
 @section('content')
     <!-- ##### Breadcrumb Area Start ##### -->
-    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(../assets/frontend/img/bg-img/41.jpg);">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content">
-                        <h2>Korean</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(../assets/frontend/img/bg-img/kpop1.jpg);">
+        
     </section>
     <!-- ##### Breadcrumb Area End ##### -->
 
@@ -73,18 +65,6 @@
                         </div>
                         @endforeach
                         {{$artikel->links()}}
-
-
-                        <!-- Pagination -->
-                        <nav>
-                            <ul class="pagination">
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i class="ti-angle-right"></i></a></li>
-                            </ul>
-                        </nav>
-
                     </div>
                 </div>
 

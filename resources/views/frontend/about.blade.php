@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
     <!-- ##### Breadcrumb Area Start ##### -->
-    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(../assets/frontend/img/bg-img/40.jpg);">
+    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(assets/frontend/img/core-img/logo1.png);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
@@ -55,14 +55,17 @@
                         <!-- Single Team Member -->
                         <div class="single-team-member d-flex align-items-center">
                             <div class="team-member-thumbnail">
-                                <img src="{{ asset('../assets/frontend/img/bg-img/person.png')}}" alt="">
+                                <img src="{{ asset('../assets/frontend/img/core-img/person.jpg')}}" alt="">
                             </div>
                             <div class="team-member-content">
                                 <h6>Albi Nuryachya Muslim</h6>
                                 <span>Penulis</span>
                                 <p>Saya sebagai penulis dari artikel yang ada di website ini, sumber informasi mengenai artikel Korean Hangout yang terkait
                                     ini , saya mendapatkannya dari beberapa situs web yang memberikan konten informasi mengenai beberapa informasi tersebut.</p>
-                            </div>
+                             </div>
+                        </div>
+                        <div class="team-member-content">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63363.266811077956!2d107.60430570000001!3d-6.985213099999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x245ad187c1c81aba!2sH%26B%20entertainment!5e0!3m2!1sid!2sid!4v1585379707393!5m2!1sid!2sid" width="670" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                         </div>
                     </div>
                 </div>

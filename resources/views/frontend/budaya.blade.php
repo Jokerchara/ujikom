@@ -131,7 +131,7 @@
                                 <a href="#">${value.created_at}</a>
                                 <a href="#">lifestyle</a>
                             </div>
-                            <a href="/singlebudaya/${value.slug}" class="post-title">${value.judul}</a>
+                            <a href="/blogbudaya/${value.slug}" class="post-title">${value.judul}</a>
                             <p >${value.konten}</p>
                         </div>
                     </div>

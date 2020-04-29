@@ -117,7 +117,8 @@
             dataType: ' json ',
             success: function(berhasil) {
                 $.each(berhasil.data.restoran, function(key, value) {
-                    console.log(berhasil)
+                    var teks = (value.konten).substr(0, 500);
+                    console.log(teks)
                     $(".restoran-korea").append(
                         `
                      <div class="single-featured-post">
@@ -131,8 +132,8 @@
                                 <a href="#">${value.created_at}</a>
                                 <a href="#">lifestyle</a>
                             </div>
-                            <a href="/singlerestoran/${value.slug}" class="post-title">${value.nama}</a>
-                            <p >${value.konten}</p>
+                            <a href="/blogrestoran/${value.slug}" class="post-title">${value.nama}</a>
+                            <p id="teks-konten">`+teks+`....</p>
                         </div>
                     </div>
                         `
